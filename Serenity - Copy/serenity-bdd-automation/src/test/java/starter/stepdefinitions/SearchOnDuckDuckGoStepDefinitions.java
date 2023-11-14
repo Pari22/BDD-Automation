@@ -1,8 +1,11 @@
 package starter.stepdefinitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.thucydides.core.annotations.Steps;
 import starter.navigation.NavigateTo;
 import starter.search.SearchFor;
@@ -29,6 +32,11 @@ public class SearchOnDuckDuckGoStepDefinitions {
 
     @Steps
     ImageResults imageResults;
+
+    @Before
+    public void set_the_stage() {
+        OnStage.setTheStage(new OnlineCast());
+    }
 
     @Given("^(?:.*) is on the DuckDuckGo home page")
     public void i_am_on_the_DuckDuckGo_home_page() {
